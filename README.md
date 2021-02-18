@@ -1,6 +1,6 @@
 ## To do list in TypeScript
 
-![app](./images/todolist-ts.jpg)
+![app](todolist-ts.jpg)
 
 1. 사용 기술
    TypeScript
