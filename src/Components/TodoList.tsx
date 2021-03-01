@@ -1,27 +1,29 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 
 interface TodoListProps {
-  todos: Array<Todo>;
   toggleChecking: ToggleChecking;
   deleteTodo: DeleteTodo;
 }
 
 export const TodoList: React.FC<TodoListProps> = ({
-  todos,
   toggleChecking,
   deleteTodo,
 }) => {
+  const todos: any = useSelector<{ todoReducer: Todo[] }>(
+    (state) => state.todoReducer
+  );
   return (
     <ListContainer>
-      {todos.map((todo) => {
+      {todos?.map((todo: Todo, idx: number) => {
         return (
-          <ListItem checked={todo.checked}>
+          <ListItem key={idx} checked={todo.checked}>
             <label>
               <input
                 onClick={() => toggleChecking(todo.id)}
                 type="checkbox"
-                checked={todo.checked}
+                defaultChecked={todo.checked}
               />
             </label>
             {todo.content}
